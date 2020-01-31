@@ -18,10 +18,10 @@ export class DynamicContentOutletComponent implements OnChanges, OnDestroy {
   container: ViewContainerRef;
 
   @Input() componentName: string;
+  @Input() componentOptions: Object;
+  private component: ComponentRef<{options: Object}>; // type: Object is a placeholder until a better, more precise type could be defined
 
-  private component: ComponentRef<{}>;
-
-  constructor(private dynamicContentService: DynamicContentOutletService) {}
+  constructor(private dynamicContentService: DynamicContentOutletService) {  }
 
   public async ngOnChanges() {
     await this.renderComponent();
@@ -35,6 +35,7 @@ export class DynamicContentOutletComponent implements OnChanges, OnDestroy {
     this.destroyComponent();
 
     this.component = await this.dynamicContentService.GetComponent(this.componentName);
+    this.component.instance.options = this.componentOptions;
     this.container.insert(this.component.hostView);
   }
 

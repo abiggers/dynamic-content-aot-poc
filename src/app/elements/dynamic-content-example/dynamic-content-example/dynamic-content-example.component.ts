@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dynamic-content-example',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dynamic-content-example.component.scss']
 })
 export class DynamicContentExampleComponent implements OnInit {
-
+  @Input() public options: string;
   constructor() { }
 
   ngOnInit() {
