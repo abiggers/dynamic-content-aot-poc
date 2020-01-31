@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "lazyModules": ["src/app/elements/dynamic-content-example/dynamic-content-example.module"],
             "outputPath": "dist/aot-dynamic-content-outlet",
             "index": "src/index.html",
             "main": "src/main.ts",
